@@ -1,17 +1,13 @@
 from typing import List
 
-def twoSum(self, nums: List[int], target: int) -> List[int]:
-    num_indices = {}
+def twoSum(nums: List[int], target: int) -> List[int]:
+    index = None
+    for i in range(len(nums) - 1):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                index = [i, j]
+                break
+    return index
 
-    for index, num in enumerate(nums):
-        complement = target - num
-
-        # If the complement exists in our dictionary, return its index and the current index
-        if complement in num_indices:
-            return [num_indices[complement], index]
-
-        # Otherwise, store the current number's index in the dictionary
-        num_indices[num] = index
-
-    # If no solution is found, return an empty list
-    return []
+if __name__ == "__main__":
+    print(twoSum([3,2,4],6))
